@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 import uuid
 
 from datetime import timedelta
@@ -11,7 +10,7 @@ from django.dispatch import receiver
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from .exceptions import NotLocked, AlreadyLocked, NonexistentLock, Expired, RenewalError
+from locking.exceptions import NotLocked, AlreadyLocked, NonexistentLock, Expired, RenewalError
 
 
 #: The default lock age.

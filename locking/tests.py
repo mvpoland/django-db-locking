@@ -1,7 +1,6 @@
 """
 Tests for the locking application
 """
-from __future__ import absolute_import
 import uuid
 
 from datetime import datetime, timedelta
@@ -12,9 +11,9 @@ from freezegun import freeze_time
 from django.contrib.auth.models import User
 from django.test import TestCase, override_settings
 
-from .exceptions import AlreadyLocked, RenewalError, NonexistentLock, NotLocked, Expired
-from .models import NonBlockingLock, _get_lock_name
-from .tasks import clean_expired_locks
+from locking.exceptions import AlreadyLocked, RenewalError, NonexistentLock, NotLocked, Expired
+from locking.models import NonBlockingLock, _get_lock_name
+from locking.tasks import clean_expired_locks
 
 
 class NonBlockingLockTest(TestCase):

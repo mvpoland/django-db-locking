@@ -1,7 +1,6 @@
-from __future__ import absolute_import
 from django.contrib import admin
 
-from .models import NonBlockingLock
+from locking.models import NonBlockingLock
 
 
 class NonBlockingLockAdmin(admin.ModelAdmin):

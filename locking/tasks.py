@@ -1,7 +1,6 @@
-from __future__ import absolute_import
 from celery import shared_task
 
-from .models import NonBlockingLock
+from locking.models import NonBlockingLock
 
 
 @shared_task
