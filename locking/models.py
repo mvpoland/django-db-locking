@@ -198,6 +198,7 @@ class NonBlockingLock(models.Model):
         verbose_name = _('NonBlockingLock')
         verbose_name_plural = _('NonBlockingLocks')
         ordering = ['created_on']
+        app_label = 'locking'
 
     def __unicode__(self):
         values = {'object': self.locked_object,
