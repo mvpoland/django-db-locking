@@ -1,3 +1,4 @@
+from builtins import object
 import uuid
 
 from datetime import timedelta
@@ -194,7 +195,7 @@ class NonBlockingLock(models.Model):
 
     objects = LockManager()
 
-    class Meta:
+    class Meta(object):
         verbose_name = _('NonBlockingLock')
         verbose_name_plural = _('NonBlockingLocks')
         ordering = ['created_on']
