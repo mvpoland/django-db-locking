@@ -1,4 +1,3 @@
-from builtins import object
 import uuid
 
 from datetime import timedelta
@@ -195,13 +194,13 @@ class NonBlockingLock(models.Model):
 
     objects = LockManager()
 
-    class Meta(object):
+    class Meta:
         verbose_name = _('NonBlockingLock')
         verbose_name_plural = _('NonBlockingLocks')
         ordering = ['created_on']
         app_label = 'locking'
 
-    def __unicode__(self):
+    def __str__(self):
         values = {'object': self.locked_object,
                   'creation_date': self.created_on}
         return _('Lock exists on %(object)s since %(creation_date)s') % values

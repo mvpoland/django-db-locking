@@ -103,12 +103,12 @@ class NonBlockingLockTest(TestCase):
         """Test the model"""
         lock = NonBlockingLock.objects.acquire_lock(self.user, max_age=10)
         self.assertTrue(lock.locked_object.endswith('%d' % self.user.id))
-        self.assertEquals(lock.locked_object, _get_lock_name(self.user))
+        self.assertEqual(lock.locked_object, _get_lock_name(self.user))
         self.assertTrue(lock.created_on)
-        self.assertEquals(lock.max_age, 10)
+        self.assertEqual(lock.max_age, 10)
         lock.release()
         lock = NonBlockingLock.objects.acquire_lock(lock_name='test_lock', max_age=10)
-        self.assertEquals(lock.locked_object, 'test_lock')
+        self.assertEqual(lock.locked_object, 'test_lock')
         self.assertIsInstance(lock.id, uuid.UUID)
 
     def test_relock(self):
@@ -119,7 +119,7 @@ class NonBlockingLockTest(TestCase):
             self.assertTrue(lock_1.is_expired)
             # try to lock again
             lock_2 = NonBlockingLock.objects.acquire_lock(self.user, max_age=1)
-            self.assertNotEquals(lock_1.created_on, lock_2.created_on)
+            self.assertNotEqual(lock_1.created_on, lock_2.created_on)
 
     def test_expired(self):
         """Test the expired locks"""
@@ -130,7 +130,7 @@ class NonBlockingLockTest(TestCase):
             self.assertTrue(not lock_1.is_expired)
             self.assertTrue(lock_2.is_expired)
             expired_locks = NonBlockingLock.objects.get_expired_locks()
-            self.assertEquals(len(expired_locks), 1)
+            self.assertEqual(len(expired_locks), 1)
 
     def test_context_manager(self):
         """A lock can be used as a context manager"""
